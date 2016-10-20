@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AdaptiveGentrification
+namespace GentrifiedSkylines
 {
     public static class Util
     {

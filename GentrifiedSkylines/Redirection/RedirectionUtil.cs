@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace AdaptiveGentrification.Redirection
+namespace GentrifiedSkylines.Redirection
 {
     public static class RedirectionUtil
     {

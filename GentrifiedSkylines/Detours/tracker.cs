@@ -1,25 +1,25 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 {
-    public static class tra
+    public static class Tracker
     {
-        public static Int64[] cker;
-        public static String[] ckerLandValue;
-        public static String[] ckerOperator;
+        public static Int64[] DistrictsArray;
+        public static String[] LandValue;
+        public static String[] Operator;
         public static bool? flag;
         public static bool? flagLandValue;
         private static ushort accessibilityGridTracker = 0;
 
-        static tra()
+        static Tracker()
         {
-            ckerActivate();
+            Activate();
             serialize(new Int64[255]);
             serializeLandValue(new String[255]);
         }
 
-        public static void ckerActivate()
+        public static void Activate()
         {
             if (!flag.HasValue)
             {
@@ -30,45 +30,44 @@ namespace AdaptiveGentrification.Detours
             }
         }
 
-        public static Int64 ckerGet(byte district)
+        public static Int64 GetDistricts(byte district)
         {
             district = Convert.ToByte(Mathf.Clamp(district, 0, 255));
             if (flag.HasValue)
             {
-                return cker[district];
+                return DistrictsArray[district];
             }
             else
             {
-                ckerActivate();
-                return ckerGet(district);
+                Activate();
+                return GetDistricts(district);
+            }
+        }
+        public static string GetLandValue(byte district)
+        {
+            district = Convert.ToByte(Mathf.Clamp(district, 0, 255));
+            if (flag.HasValue)
+            {
+                return LandValue[district];
+            }
+            else
+            {
+                Activate();
+                return GetLandValue(district);
             }
         }
 
-        public static string ckerGetLandValue(byte district)
+        public static string GetOperator(byte district)
         {
             district = Convert.ToByte(Mathf.Clamp(district, 0, 255));
             if (flag.HasValue)
             {
-                return ckerLandValue[district];
+                return Operator[district];
             }
             else
             {
-                ckerActivate();
-                return ckerGetLandValue(district);
-            }
-        }
-
-        public static string ckerGetOperator(byte district)
-        {
-            district = Convert.ToByte(Mathf.Clamp(district, 0, 255));
-            if (flag.HasValue)
-            {
-                return ckerOperator[district];
-            }
-            else
-            {
-                ckerActivate();
-                return ckerGetOperator(district);
+                Activate();
+                return GetOperator(district);
             }
         }
 
@@ -77,7 +76,7 @@ namespace AdaptiveGentrification.Detours
             for (byte i = 0; (i < 255); i++)
             {
                 t[i] = 0;
-                cker = t;
+                DistrictsArray = t;
             }
         }
 
@@ -86,7 +85,7 @@ namespace AdaptiveGentrification.Detours
             for (byte i = 0; (i < 255); i++)
             {
                 s[i] = "0";
-                ckerLandValue = s;
+                LandValue = s;
             }
         }
 
@@ -95,39 +94,39 @@ namespace AdaptiveGentrification.Detours
             for (byte i = 0; (i < 255); i++)
             {
                 s[i] = "0";
-                ckerOperator = s;
+                Operator = s;
             }
         }
 
-        public static void ckerLoad(byte l, Int64 v)
+        public static void LoadDistricts(byte l, Int64 v)
         {
             if (flag.HasValue)
             {
                 l = Convert.ToByte(Mathf.Clamp(l, 0, 255));
-                cker[l] += v;
+                DistrictsArray[l] += v;
             }
             else
             {
-                ckerActivate();
-                ckerLoad(l, v);
+                Activate();
+                LoadDistricts(l, v);
             }
         }
 
-        public static void ckerSet(byte l, Int64 v)
+        public static void SetDistricts(byte l, Int64 v)
         {
             if (flag.HasValue)
             {
                 l = Convert.ToByte(Mathf.Clamp(l, 0, 255));
-                cker[l] = v;
+                DistrictsArray[l] = v;
             }
             else
             {
-                ckerActivate();
-                ckerSet(l, v);
+                Activate();
+                SetDistricts(l, v);
             }
         }
 
-        public static void ckerSetLandValue(byte l, string str)
+        public static void SetLandValue(byte l, string str)
         {
             if (flag.HasValue)
             {
@@ -135,50 +134,50 @@ namespace AdaptiveGentrification.Detours
                 try
                 {
                     double temp = Convert.ToDouble(str);
-                    ckerLandValue[l] = str;
+                    LandValue[l] = str;
                 }
                 catch (System.FormatException e)
                 {
-                    ckerSetLandValue(l, str.Substring(1, str.Length - 1));
+                    SetLandValue(l, str.Substring(1, str.Length - 1));
                 }
                 catch (IndexOutOfRangeException e2)
                 {
-                    ckerLandValue[l] = "0";
+                    LandValue[l] = "0";
                 }
             }
             else
             {
-                ckerActivate();
-                ckerSetLandValue(l, str);
+                Activate();
+                SetLandValue(l, str);
             }
         }
 
-        public static void ckerSetOperator(byte l, string str)
+        public static void SetOperator(byte l, string str)
         {
             if (flag.HasValue)
             {
                 l = Convert.ToByte(Mathf.Clamp(l, 0, 255));
                 try
                 {
-                    ckerOperator[l] = str;
+                    Operator[l] = str;
                 }
                 catch (System.FormatException e)
                 {
-                    ckerSetOperator(l, str.Substring(1, str.Length - 1));
+                    SetOperator(l, str.Substring(1, str.Length - 1));
                 }
                 catch (IndexOutOfRangeException e2)
                 {
-                    ckerOperator[l] = "X";
+                    Operator[l] = "X";
                 }
             }
             else
             {
-                ckerActivate();
-                ckerSetOperator(l, str);
+                Activate();
+                SetOperator(l, str);
             }
         }
 
-        public static bool ckerCheckAccessibilityUpdate()
+        public static bool CheckAccessibilityUpdate()
         {
             if (accessibilityGridTracker == 0) //Three-step check assures that the TrafficLog return non-null value
             {

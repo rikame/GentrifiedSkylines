@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 {
     public class BuildingTrafficLog
     {

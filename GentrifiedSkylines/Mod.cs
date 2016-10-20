@@ -1,6 +1,6 @@
 ﻿using ICities;
 
-namespace AdaptiveGentrification
+namespace GentrifiedSkylines
 {
     public class Mod : IUserMod
     {

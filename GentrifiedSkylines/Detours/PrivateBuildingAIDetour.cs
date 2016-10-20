@@ -4,12 +4,12 @@
 // MVID: 19C073A7-376D-4654-856C-851D76451F95
 // Assembly location: D:\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll
 
-using AdaptiveGentrification.Redirection;
+using GentrifiedSkylines.Redirection;
 using ColossalFramework;
 using ColossalFramework.Math;
 using UnityEngine;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 
 {
     [TargetType(typeof(PrivateBuildingAI))]

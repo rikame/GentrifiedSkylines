@@ -1,9 +1,9 @@
-﻿using AdaptiveGentrification.Redirection;
+﻿using GentrifiedSkylines.Redirection;
 using ICities;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace AdaptiveGentrification
+namespace GentrifiedSkylines
 {
     public class LoadingExtension : LoadingExtensionBase
     {

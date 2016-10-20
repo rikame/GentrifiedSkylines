@@ -1,9 +1,9 @@
-﻿using AdaptiveGentrification.Redirection;
+﻿using GentrifiedSkylines.Redirection;
 using ColossalFramework;
 using ColossalFramework.Math;
 using UnityEngine;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 {
     [TargetType(typeof(HumanAI))]
     internal class HumanAIDetour : CitizenAI

@@ -1,4 +1,4 @@
-﻿namespace AdaptiveGentrification.Redirection
+﻿namespace GentrifiedSkylines.Redirection
 {
     public class Tuple<T1, T2>
     {

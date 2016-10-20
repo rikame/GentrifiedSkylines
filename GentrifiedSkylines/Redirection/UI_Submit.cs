@@ -1,8 +1,8 @@
 ﻿/*
-using AdaptiveGentrification.Redirection;
+using GentrifiedSkylines.Redirection;
 using ColossalFramework.UI;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 {
     [TargetType(typeof(UITextField))]
     class UITextFieldDetour : UITextField

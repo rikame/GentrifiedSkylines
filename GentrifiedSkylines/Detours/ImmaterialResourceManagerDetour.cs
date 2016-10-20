@@ -1,5 +1,5 @@
 ﻿//using System.Runtime.CompilerServices;
-using AdaptiveGentrification.Redirection;
+using GentrifiedSkylines.Redirection;
 using ColossalFramework;
 using System;
 using UnityEngine;
@@ -8,7 +8,7 @@ using UnityEngine;
 //using System.Threading;
 //using UnityEngine;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 
 {
     [TargetType(typeof(ImmaterialResourceManager))]
@@ -90,7 +90,7 @@ namespace AdaptiveGentrification.Detours
             int num10 = 0;
             try
             {
-                if (tra.ckerCheckAccessibilityUpdate())
+                if (Tracker.CheckAccessibilityUpdate())
                 {
                     grid3 = TrafficLog.CollectRatings(true, false);
                 }
@@ -202,17 +202,17 @@ namespace AdaptiveGentrification.Detours
                     string m_lastvalidname;
                     m_lastvalidname = m_name;
                     string m_realname = m_name;                         //Real Name
-                    string m_operator = tra.ckerGetOperator(m_byte);    //Operator
+                    string m_operator = Tracker.GetOperator(m_byte);    //Operator
                     string m_deltaS = "";                               //Value String
                     double m_deltaD = 0;                                //Value Number
-                    string m_currentOperator = tra.ckerGetOperator(m_byte);
-                    double m_CurrentValue = Convert.ToDouble(tra.ckerGetLandValue(m_byte)); //Set current operator
+                    string m_currentOperator = Tracker.GetOperator(m_byte);
+                    double m_CurrentValue = Convert.ToDouble(Tracker.GetLandValue(m_byte)); //Set current operator
                     num10 = Convert.ToInt32(m_CurrentValue);
                     if ((m_name.EndsWith("+") | m_name.EndsWith("-")) | (m_name.EndsWith("*") | m_name.EndsWith("/")))
                     {
                         num10 = 0;
-                        tra.ckerSetOperator(m_byte, m_name.Substring(m_name.Length - 1));       //Set new operator
-                        m_operator = tra.ckerGetOperator(m_byte);                    // Get Operator
+                        Tracker.SetOperator(m_byte, m_name.Substring(m_name.Length - 1));       //Set new operator
+                        m_operator = Tracker.GetOperator(m_byte);                    // Get Operator
                         try
                         {
                             m_deltaS = getSubstring(m_name.Substring(0, m_name.Length - 1));    //Get the Value
@@ -264,15 +264,15 @@ namespace AdaptiveGentrification.Detours
                                 DM.StartCoroutine(DM.SetDistrictName(m_byte, m_lastvalidname));
                             }
                         }
-                        tra.ckerSetLandValue(m_byte, m_deltaS);                         //Assign number to Array
+                        Tracker.SetLandValue(m_byte, m_deltaS);                         //Assign number to Array
                     }
                     else
                     {
                         m_operator = " ";
                     }
-                    m_currentOperator = tra.ckerGetOperator(m_byte);        //Reassign operator
+                    m_currentOperator = Tracker.GetOperator(m_byte);        //Reassign operator
 
-                    string landModifier = tra.ckerGetLandValue(m_byte);
+                    string landModifier = Tracker.GetLandValue(m_byte);
 
                     if (m_operator.EndsWith("+"))
                     {
@@ -294,7 +294,7 @@ namespace AdaptiveGentrification.Detours
                         }
                         catch (DivideByZeroException e4) { }
                     }
-                    tra.ckerSetLandValue(m_byte, Convert.ToString(num10));
+                    Tracker.SetLandValue(m_byte, Convert.ToString(num10));
                 }
             }
 

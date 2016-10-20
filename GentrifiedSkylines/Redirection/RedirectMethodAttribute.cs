@@ -1,16 +1,16 @@
 ﻿using System;
 
-namespace AdaptiveGentrification.Redirection
+namespace GentrifiedSkylines.Redirection
 {
     [AttributeUsage(AttributeTargets.Method)]
-    internal class RedirectReverseAttribute : Attribute
+    internal class RedirectMethodAttribute : Attribute
     {
-        public RedirectReverseAttribute()
+        public RedirectMethodAttribute()
         {
             this.OnCreated = false;
         }
 
-        public RedirectReverseAttribute(bool onCreated)
+        public RedirectMethodAttribute(bool onCreated)
         {
             this.OnCreated = onCreated;
         }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 {
     public class Leg
     {

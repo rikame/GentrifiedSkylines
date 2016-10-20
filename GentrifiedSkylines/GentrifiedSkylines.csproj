@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9FEEEA2A-F950-48EE-9418-702DC0C8BE8D}</ProjectGuid>
+    <ProjectGuid>{938B7064-5077-4978-AC53-155698523560}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GentrifiedSkylines</RootNamespace>

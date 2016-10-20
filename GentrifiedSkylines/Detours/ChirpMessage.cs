@@ -1,7 +1,7 @@
 ﻿using ICities;
 using System;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 {
     public class ChirpMessage : IChirperMessage
     {

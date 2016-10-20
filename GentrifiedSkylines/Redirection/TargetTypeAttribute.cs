@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AdaptiveGentrification.Redirection
+namespace GentrifiedSkylines.Redirection
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
     public class TargetTypeAttribute : Attribute

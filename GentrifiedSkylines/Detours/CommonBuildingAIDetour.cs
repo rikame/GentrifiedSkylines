@@ -1,5 +1,5 @@
 ﻿//using System.Runtime.CompilerServices;
-using AdaptiveGentrification.Redirection;
+using GentrifiedSkylines.Redirection;
 using ColossalFramework;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ using UnityEngine;
 //using System.Threading;
 //using UnityEngine;
 
-namespace AdaptiveGentrification.Detours
+namespace GentrifiedSkylines.Detours
 
 {
     [TargetType(typeof(CommonBuildingAI))]
@@ -30,7 +30,7 @@ namespace AdaptiveGentrification.Detours
             //Create a new policy or modify an existing policy
             DistrictPolicies.Policies policyG = DistrictPolicies.Policies.Recycling;
             //tra tra = new tra();
-            //tra.ckerActivate();
+            //Tracker.Activate();
             //tra.serialize(new byte[255]);
             if (instanceG.IsDistrictPolicySet(policyG, instanceG.GetDistrict(buildingData.m_position)))
             {
@@ -59,9 +59,9 @@ namespace AdaptiveGentrification.Detours
                 int r = rng.Next(0, 10);
                 if (r==5)
                 {
-                    tra.ckerLoad(m_districtbyte, 1);
-                    //tra.ckerLoad(m_districtbyte, 1);
-                    int m_gentrifiedint = Convert.ToInt32(tra.ckerGet(m_districtbyte));
+                    Tracker.Load(m_districtbyte, 1);
+                    //Tracker.Load(m_districtbyte, 1);
+                    int m_gentrifiedint = Convert.ToInt32(Tracker.Get(m_districtbyte));
                     string m_gentrifiedstring = Convert.ToString(m_gentrifiedint);
                     ChirpPanel chirper = Singleton<ChirpPanel>.instance;
                     if ((m_gentrifiedint % 100) == 0)

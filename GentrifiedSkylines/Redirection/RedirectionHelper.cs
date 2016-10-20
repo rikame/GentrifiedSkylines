@@ -21,7 +21,7 @@ THE SOFTWARE.
 using System;
 using System.Reflection;
 
-namespace AdaptiveGentrification.Redirection
+namespace GentrifiedSkylines.Redirection
 {
     public struct RedirectCallsState
     {
