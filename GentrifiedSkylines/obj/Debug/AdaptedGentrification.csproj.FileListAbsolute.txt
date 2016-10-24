@@ -1,0 +1,23 @@
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\AdaptedGentrification.dll
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\AdaptedGentrification.pdb
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\Assembly-CSharp-firstpass.dll
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\Assembly-CSharp.dll
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\ColossalManaged.dll
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\ICities.dll
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\ICSharpCode.SharpZipLib.dll
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\UnityEngine.dll
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\UnityEngine.xml
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.dll
+c:\users\rikame-laptop-v3\documents\visual studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.pdb
+C:\Users\rikame-laptop-v3\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.csprojResolveAssemblyReference.cache
+C:\Users\Harris Kalat\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\AdaptedGentrification.dll
+C:\Users\Harris Kalat\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\AdaptedGentrification.pdb
+C:\Users\Harris Kalat\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Harris Kalat\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Harris Kalat\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\bin\Debug\UnityEngine.xml
+C:\Users\Harris Kalat\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.csprojResolveAssemblyReference.cache
+C:\Users\Harris Kalat\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.dll
+C:\Users\Harris Kalat\Documents\Visual Studio 2015\Projects\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.pdb
+D:\Google Drive\C# Workspaces\AdaptedGentrification 10-18\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.csprojResolveAssemblyReference.cache
+D:\Google Drive\C# Workspaces\AdaptedGentrification 10-18\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.dll
+D:\Google Drive\C# Workspaces\AdaptedGentrification 10-18\AdaptedGentrification\AdaptedGentrification\obj\Debug\AdaptedGentrification.pdb

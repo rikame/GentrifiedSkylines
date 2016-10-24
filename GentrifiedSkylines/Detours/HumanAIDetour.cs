@@ -6,7 +6,7 @@ using UnityEngine;
 namespace GentrifiedSkylines.Detours
 {
     [TargetType(typeof(HumanAI))]
-    internal class HumanAIDetour : CitizenAI
+    internal class HumanAIDetour : HumanAI
     {
         public override Color GetColor(ushort instanceID, ref CitizenInstance data, InfoManager.InfoMode infoMode)
         {

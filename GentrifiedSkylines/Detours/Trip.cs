@@ -20,6 +20,7 @@ namespace GentrifiedSkylines.Detours
         private bool tentativeEndTrip = false;
         private bool legActivated = false;
         private bool waitingActivated = false;
+        private bool invalid = false;
         private Leg.Flags tentativeLeg = Leg.Flags.None;
         private Leg.Flags currentVehicleType;
         private Leg.Flags previousVehicleType = Leg.Flags.None;
@@ -138,7 +139,7 @@ namespace GentrifiedSkylines.Detours
             m_legs[m_current].finalize(vec);
         }
 
-        public void TryAddLeg(CitizenInstance.Flags t_flags)                                                                //Attempt to add a Leg to the trip, need more parameters
+        public void TryAddLeg(CitizenInstance.Flags t_flags)        //Checks to see if a new leg should be added. If not then
         {
             if (CheckMoving())
             {
@@ -158,7 +159,10 @@ namespace GentrifiedSkylines.Detours
                 return true;
             return false;
         }
-
+        public bool IsInvalid()
+        {
+            return invalid;
+        }
         private bool CheckNewVehicle()
         {
             bool found = false;
@@ -215,20 +219,23 @@ namespace GentrifiedSkylines.Detours
                 ItemClass.Service t_service = GetMyVehicle().Info.m_class.m_service;
                 if (t_service != ItemClass.Service.None)
                 {
-                    //InvalidateTrip
+                    this.Invalidate();                          //Trip is taking place in a special case and is excluded from consideration with regard to accessibility.
                 }
-                if (!found) //Citizen is moving but without any detectable vehicle. Walking is assumed.
+                if (!found)                                     //Citizen is moving but without any detectable vehicle. Walking is assumed.
                     currentVehicleType = Leg.Flags.Walk;
                 if (currentVehicleType != previousVehicleType)
                     return true;
                 return false;
             }
-            currentVehicleType = Leg.Flags.Walk;            //Repeated code block. If citizen is moving with an invalid vehicle then walking is assumed.
+            currentVehicleType = Leg.Flags.Walk;                //Repeated code block. If citizen is moving with an invalid vehicle then walking is assumed.
             if (currentVehicleType != previousVehicleType)
                 return true;
             return false;
         }
-
+        private void Invalidate()
+        {
+            invalid = true;
+        }
         private void CheckFlags(CitizenInstance.Flags t_flags)
         {
             tentativeCount = 0;
@@ -246,14 +253,10 @@ namespace GentrifiedSkylines.Detours
                     if ((m_flags & CitizenInstance.Flags.Underground) != CitizenInstance.Flags.None)
                     //Start Underground
                     {
-                        tentativeNewLeg = true;
-                        tentativeCount += 1;
-                        tentativeLeg = Leg.Flags.Metro;
                     }
                     else
                     //Cease Underground
                     {
-                        tentativeEndLeg = true;
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.BorrowCar) != (t_flags & CitizenInstance.Flags.BorrowCar))
@@ -261,14 +264,10 @@ namespace GentrifiedSkylines.Detours
                     if ((m_flags & CitizenInstance.Flags.BorrowCar) != CitizenInstance.Flags.None)
                     //Start BorrowCar
                     {
-                        //New Leg: Y ; Cycle through vehicle type
-                        tentativeNewLeg = true;
-                        tentativeCount += 1;
                     }
                     else
                     //Cease BrorrowCar
                     {
-                        tentativeEndLeg = true;
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.EnteringVehicle) != (t_flags & CitizenInstance.Flags.EnteringVehicle))
@@ -276,14 +275,10 @@ namespace GentrifiedSkylines.Detours
                     if ((m_flags & CitizenInstance.Flags.EnteringVehicle) != CitizenInstance.Flags.None)
                     //Start EnteringVehicle
                     {
-                        //New Leg: Y ; Cycle through vehicle type
-                        tentativeNewLeg = true;
-                        tentativeCount += 1;
                     }
                     else
                     //Cease EnteringVehicle
                     {
-                        //Special case, presumably entering a vehicle, whichever it is, means that they only temporarily do so and are transferred.
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.RidingBicycle) != (t_flags & CitizenInstance.Flags.RidingBicycle))
@@ -291,12 +286,10 @@ namespace GentrifiedSkylines.Detours
                     if ((m_flags & CitizenInstance.Flags.RidingBicycle) != CitizenInstance.Flags.None)
                     //Start RidingBicycle
                     {
-                        //New Leg: Y ;
                     }
                     else
                     //Cease RidingBicycle
                     {
-                        //New Leg: E ; Effect: Variable
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.OnBikeLane) != (t_flags & CitizenInstance.Flags.OnBikeLane))
@@ -304,12 +297,10 @@ namespace GentrifiedSkylines.Detours
                     if ((m_flags & CitizenInstance.Flags.OnBikeLane) != CitizenInstance.Flags.None)
                     //Start OnBikeLane
                     {
-                        //Special Case, caclulate ratio in RidingBicycle On vs. Off
                     }
                     else
                     //Cease OnBikeLane
                     {
-                        //Special Case
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.OnPath) != (t_flags & CitizenInstance.Flags.OnPath))
@@ -317,12 +308,10 @@ namespace GentrifiedSkylines.Detours
                     if ((m_flags & CitizenInstance.Flags.OnPath) != CitizenInstance.Flags.None)
                     //Start OnPath
                     {
-                        //New Leg: Y ;
                     }
                     else
                     //End OnPath
                     {
-                        //New Leg: E ; Effect: Variable
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.SittingDown) != (t_flags & CitizenInstance.Flags.SittingDown))
@@ -330,31 +319,25 @@ namespace GentrifiedSkylines.Detours
                     if ((m_flags & CitizenInstance.Flags.SittingDown) != CitizenInstance.Flags.SittingDown)
                     //Start SittingDown
                     {
-                        //New Leg: Y ; Effect: None
                     }
                     else
                     //Cease SittingDown
                     {
-                        //New Leg: N ; Effect: Positive
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.TryingSpawnVehicle) != (t_flags & CitizenInstance.Flags.TryingSpawnVehicle))
                 {
-                    //New Leg: Y ;
                 }
                 if ((m_flags & CitizenInstance.Flags.WaitingPath) != (t_flags & CitizenInstance.Flags.WaitingPath))
                 {
-                    //New Leg: N ; Effect: Penalty
                 }
                 if ((m_flags & CitizenInstance.Flags.WaitingTransport) != (t_flags & CitizenInstance.Flags.WaitingTransport))
                 {
-                    //New Leg: N ; Effect: Penalty
                 }
                 if ((m_flags & CitizenInstance.Flags.WaitingTaxi) != (t_flags & CitizenInstance.Flags.WaitingTaxi))
                 {
                     if ((m_flags & CitizenInstance.Flags.WaitingTaxi) != CitizenInstance.Flags.None)
                     {
-                        //New Leg: N ; Effect: Penalty
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.BoredOfWaiting) != (t_flags & CitizenInstance.Flags.BoredOfWaiting))
@@ -362,48 +345,49 @@ namespace GentrifiedSkylines.Detours
                     if ((m_flags & CitizenInstance.Flags.BoredOfWaiting) != CitizenInstance.Flags.None)
                     //Start BoredOfWaiting
                     {
-                        //New Leg: N ; Effect: End trip and penalize
                     }
                     else
                     //Cease BoredOfWaiting
                     {
-                        //New Leg: N ; Effect: Penalty
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.Panicking) != (t_flags & CitizenInstance.Flags.Panicking))
                 {
-                    //New Leg: N ; Effect: Penalty
                 }
                 if ((m_flags & CitizenInstance.Flags.AtTarget) != (t_flags & CitizenInstance.Flags.AtTarget))
                 {
                     if ((m_flags & CitizenInstance.Flags.AtTarget) != CitizenInstance.Flags.None)
                     //Start AtTarget
                     {
-                        //End Leg and Trip
                     }
                     else
                     //Cease AtTarget
                     {
-                        //End Leg and Trip
                     }
                 }
                 if ((m_flags & CitizenInstance.Flags.InsideBuilding) != (t_flags & CitizenInstance.Flags.InsideBuilding))
                 {
-                    //New Leg: N ; Effect: Wait to reach target
                 }
                 if ((m_flags & CitizenInstance.Flags.Deleted) != (t_flags & CitizenInstance.Flags.Deleted))
                 {
-                    //New Leg: N ; Effect: Try to end trip
                 }
                 if ((m_flags & CitizenInstance.Flags.CannotUseTransport) != (t_flags & CitizenInstance.Flags.CannotUseTransport))
                 {
-                    //Effect: Unsure
                 }
                 if ((m_flags & CitizenInstance.Flags.CannotUseTaxi) != (t_flags & CitizenInstance.Flags.CannotUseTaxi))
                 {
-                    //Effect: Unsure
                 }
-                //TargetFlags ; RequireSlowStart ; Transition ; Created ; CustomName ; CustomColor ; HangAround
+                /*
+                * ----------------------------------------------------------------------------------------------------------------------------------------------------------
+                * UNUSED:                           TargetFlags ; RequireSlowStart ; Transition ; Created ; CustomName ; CustomColor ; HangAround ;
+                * ----------------------------------------------------------------------------------------------------------------------------------------------------------
+                */
+
+
+        
+
+
+
             }
         }
 

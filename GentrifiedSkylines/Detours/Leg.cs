@@ -190,7 +190,8 @@ namespace GentrifiedSkylines.Detours
             Walk = 128,
             Bus = 256,
             Taxi = 512,
-            All = 1023
+            Bonus = 1024,
+            All = 2047
         }
     }
 }
